@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD HIBERNATE 5.2.11.Final CONFIGURATION -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+			<!-- VERSION HIBERNATE-core : 5.2.11 Final -->
+        
+        <!-- =========================================== -->
+		<!-- DOIT ETRE SITUE SOUS LA RACINE DU CLASSPATH -->
+		<!-- POUR QU' Hibernate LE TROUVE AU DEMARRAGE.  -->
+		
+		<!-- ATTENTION -->
+		<!-- Vous devez CREER MANUELLEMENT LA BASE D'ABORD. -->
+		<!-- (CREATE DATABASE xxx WITH OWNER = postgres		-->	
+	    <!-- ENCODING = 'UTF8' sous postgres par exemple).	-->    
+		<!-- =============================================	-->   
+		
+
+<!-- INDIQUE QUE LA PERSISTENCE EST REALISEE PAR HIBERNATE -->
+<hibernate-configuration>
+
+	<session-factory>
+	
+		<!-- ================================================== -->
+		<!--  Paramètres de connexion JDBC à la base de données -->
+		<!-- ================================================== -->
+
+		
+					<!-- ************************* -->
+					<!-- DRIVER DE BASE DE DONNEES -->
+					<!-- ************************* -->
+		<!-- ========================================================= -->
+		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		<!-- ========================================================= -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        
+		 <!-- ========================================================= -->
+		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		 <!-- ========================================================= -->   	
+<!-- 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> -->
+				
+		<!-- ========================================================= -->
+		<!--                     hsqldb 2.4.0                          -->
+		<!-- ========================================================= -->
+<!-- 		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property> -->
+		
+
+		
+						<!-- ***************************** -->
+			    		<!-- CONNEXION A LA BASE DU PROJET -->
+			    		<!-- ***************************** -->
+		<!-- ========================================================= -->
+		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		<!-- ========================================================= -->
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/tuto_fragkouli</property>
+    		
+		 <!-- ========================================================= -->
+		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		 <!-- ========================================================= -->   	
+<!-- 		 <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/xxx</property> -->
+		
+		<!-- ========================================================= -->
+		<!--                     hsqldb 2.4.0                          -->
+		<!-- ========================================================= -->
+<!-- 		<property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost/xxx</property>-->
+				
+
+						<!-- ******************* -->
+						<!-- LOGIN, MOT DE PASSE -->
+						<!-- ******************* -->
+			
+		<!-- ========================================================= -->
+		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		<!-- ========================================================= --> 
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">postgres</property>
+		
+		<!-- ========================================================= -->
+		<!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		<!-- ========================================================= -->   		
+<!--     	<property name="hibernate.connection.username">root</property> -->
+<!--     	<property name="hibernate.connection.password">root</property> -->
+    	
+ 		<!-- ========================================================= -->
+		<!--                     hsqldb 2.4.0                          -->
+		<!-- ========================================================= -->	
+<!--     	<property name="hibernate.connection.username">sa</property> -->
+<!--     	<property name="hibernate.connection.password"></property> -->
+    	    	
+
+
+		<!-- ================================================== -->
+		<!--               Paramétrages Hibernate               -->
+		<!-- ================================================== -->
+
+
+						<!-- **************************** -->
+						<!--          DIALECT             -->
+						<!-- **************************** -->
+			<!-- Dialecte que doit utiliser Hibernate pour communiquer 	   -->
+			<!-- avec la BD de l'application.  							   -->			
+		    <!-- ========================================================= -->
+		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		    <!-- ========================================================= -->
+    		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+    		
+		    <!-- ========================================================= -->
+		    <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		    <!-- ========================================================= -->   	
+<!-- 			<property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property> -->
+
+			<!-- ========================================================= -->
+		    <!--                     hsqldb 2.4.0                          -->
+		    <!-- ========================================================= -->
+<!-- 			<property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property> -->
+	
+
+		 			<!-- ************************** -->
+					<!-- pour voir les requetes SQL -->
+					<!-- ************************** -->
+
+        	<!-- Montrer toutes les réquêtes générées -->
+<!-- 	        <property name="hibernate.show_sql">true</property> -->
+     	    <property name="hibernate.show_sql">false</property>
+	        
+	        <!-- Formater le SQL de sortie -->
+<!-- 			<property name="hibernate.format_sql">true</property> -->
+			<property name="hibernate.format_sql">false</property>
+
+			<!-- faciliter le débogage du SQL -->
+<!-- 			<property name="hibernate.use_sql_comments">true</property> -->
+ 			<property name="hibernate.use_sql_comments">false</property>
+		
+
+				<!-- *************************************** -->
+				<!-- Pour générer des statistiques Hibernate -->
+				<!-- *************************************** -->
+<!--         	<property name="hibernate.generate_statistics">true</property> -->
+        	<property name="hibernate.generate_statistics">false</property>
+        	
+        	
+
+			<!-- ************************************ -->
+			<!-- Désactiver le cache de second niveau -->
+			<!-- ************************************ -->
+			<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>	
+
+
+		<!-- ******************************************************** -->
+		<!--        ACTIVATION DU CACHE DE SECOND NIVEAU              -->
+		<!--           Easy Hibernate Cache (EhCache)                 -->
+		<!-- (classe EhCacheProvider contenue dans ehcache-1.3.0.jar) -->
+		<!-- ******************************************************** -->		
+<!-- 		<property name="hibernate.cache.provider_class"> -->
+<!-- 			net.sf.ehcache.hibernate.EhCacheProvider -->
+<!-- 		</property> -->
+<!-- 		<property name="hibernate.cache.use_second_level_cache"> -->
+<!-- 			true -->
+<!-- 		</property> -->
+<!-- 		<property name="hibernate.cache.use_query_cache"> -->
+<!-- 			true -->
+<!-- 		</property> -->
+<!-- 		<property name="net.sf.ehcache.configurationResourcename"> -->
+<!-- 			ehcache.xml -->
+<!-- 		</property>	 -->
+
+
+
+			<!-- ========================================================= -->
+			<!--         STRATEGIE DE CONSERVATION DES TABLES              -->
+			<!-- PASSER EN validate pour la PROD.****					   -->
+			<!-- * none (default) : No action will be performed.           -->
+			<!-- * create-only : Database creation will be generated.      -->
+			<!-- * drop : Database dropping will be generated.             -->
+			<!-- * create : Database dropping puis database creation.      -->
+			<!-- * create-drop : Drop + create on startup. drop à la fin.  -->
+			<!-- * validate : Validate the database schema.                -->
+			<!-- * update : Update the database schema.                    -->						   
+			<!-- ========================================================= -->
+			<!-- ******************************************** 	-->
+	    	<!-- Comportement pour la conservation des tables 	-->
+	    	<!-- PASSER EN update pour la PROD.					-->
+			<!-- ******************************************** 	-->		
+			<!-- Recrée le schéma à chaque démarrage. Drop à la fermeture -->
+			 <property name="hibernate.hbm2ddl.auto">create-drop</property>
+			
+			<!-- Supprime et re-créée le schéma de base de données au démarrage -->
+<!-- 			<property name="hbm2ddl.auto">create</property> -->
+		
+			<!-- Met à jour le schéma (sans destruction de données) si modification d'une Entity -->
+<!--  			<property name="hibernate.hbm2ddl.auto">update</property> -->
+
+			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->		
+<!-- 			<property name="hibernate.hbm2ddl.auto">validate</property>  -->
+
+
+		
+					<!-- ***************** -->
+					<!-- Pool de Connexion -->
+					<!-- ***************** -->
+<!-- https://www.boraji.com/hibernate-5-c3p0-connection-pool-configuration-example -->
+			                
+        <!-- Pool de connection Hibernate (interne) -->
+        <!-- https://java.developpez.com/faq/hibernate/?page=Les-fichiers-de-configuration#Comment-configurer-un-pool-de-connexion -->
+        <!-- Hibernate possède son propre algorithme de pool de connexion,	--> 
+        <!-- mais il reste très rudimentaire et n'est pas conseillé 		-->
+        <!-- pour un programme en production. 								-->
+<!--         <property name="hibernate.connection.pool_size">50</property> -->
+ 
+        
+		<!-- Utilisation éventuelle du pool de connexion 		-->
+		<!-- tierce partie c3po c3p0-0.9.5.2 (PROD) 			-->
+<!-- 		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>	 -->
+<!-- 		<property name="c3p0.minPoolSize">10</property> -->
+<!-- 		<property name="c3p0.maxPoolSize">50</property> -->
+<!-- 		<property name="c3p0.timeout">30</property> -->
+<!-- 		<property name="c3p0.acquireIncrement">1</property> -->
+<!-- 		<property name="c3p0.max_statement">50</property> -->
+<!-- 		<property name="c3p0.idle_test_period">2000</property> -->
+<!-- 		<property name="c3p0.unreturnedConnectionTimeout">400</property> -->
+<!-- 		<property name="c3p0.debugUnreturnedConnectionStackTraces">true</property> -->
+<!-- 		<property name="c3p0.acquireRetryAttempts">1</property> -->
+<!--        <property name="c3p0.acquireRetryDelay">250</property> -->
+
+
+		<!-- Utilisation éventuelle du pool de connexion d'Hibernate 	--> 
+		<!-- tierce partie c3po hibernate-c3p0-5.2.11.Final (PROD) 		-->
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>		
+		<property name="hibernate.c3p0.min_size">10</property>
+		<property name="hibernate.c3p0.max_size">50</property>
+		<property name="hibernate.c3p0.timeout">30</property>
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">2000</property>
+		<property name="hibernate.c3p0.unreturnedConnectionTimeout">400</property>
+		<property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces">true</property>
+		<property name="hibernate.c3p0.acquireRetryAttempts">1</property>
+        <property name="hibernate.c3p0.acquireRetryDelay">250</property>
+
+		
+
+
+			<!-- ************************** -->
+		<!-- Gestion automatique du Contexte de Session -->
+			<!-- ************************** -->
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+		
+
+       
+            
+ 			<!-- ******************************************** -->
+			<!--                MAPPING FILES                 -->
+			<!-- Déclaration des Objets métier persistants.   -->
+			<!-- ******************************************** -->
+			
+			<!-- ATTENTION !!! mettre mapping class="le chemin java 
+			d'une classe java" lorsque l'on utilise les annotations. -->
+			
+
+			<!-- ATTENTION !!! mettre 
+			mapping resource="le chemin dos des hbm.xml 
+			avec / " si l'on utilise les hbm.xml. -->
+
+		
+			<!-- ATTENTION !!! l'ordre de déclaration des ressources -->
+			<!-- mappées ne compte pas car Hibernate commence par lire-->
+			<!-- le présent hibernate.cfg.xml, puis les  -->
+		 	<!-- valueobject.hbm.xml. les tables correspondant aux -->
+		 	<!-- valueobjects seront donc créées en premier. -->
+		 	<!-- les tables d'association n'interviennent qu'ensuite. -->
+		
+		<!-- ********************************************************   --> 	
+		<!-- 					AVEC LES ANNOTATIONS 					-->
+		<!-- ********************************************************   --> 
+		<!-- Book -->
+		 <mapping class="levy.daniel.application.model.metier.book.impl.Book" /> 
+		<!-- SousBook -->
+		 <mapping class="levy.daniel.application.model.metier.book.impl.SousBook" /> 
+
+	</session-factory>
+	
+</hibernate-configuration>

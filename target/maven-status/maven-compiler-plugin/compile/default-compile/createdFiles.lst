@@ -1,0 +1,4 @@
+levy\daniel\application\Application.class
+levy\daniel\application\services\impl\MockMessageService.class
+levy\daniel\application\services\IMessageService.class
+levy\daniel\application\metier\impl\Greeter.class

@@ -1,0 +1,257 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<!-- Version du POM. -->
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- ========================================================== -->
+	<!-- GAV (identifiant du projet)                                -->
+	<!-- G : groupId : nom de domaine                               -->
+	<!-- A : artifactId : nom du projet                             -->
+	<!-- V : version : version du projet                            -->
+	<!-- ========================================================== -->
+	<!-- domaine (espace de nom) appelé GROUPE (G) dans Maven -->
+	<groupId>levy.daniel.application</groupId>
+	<!-- Nom du projet appelé artifactId (A) dans Maven -->
+	<artifactId>tuto_spring_annotations</artifactId>
+	<!-- Version Bêta de développement (SNAPSHOT) -->
+	<!--non incrémentée dans Maven -->
+	<version>0.0.1-SNAPSHOT</version>	
+
+
+	<!-- ========================================================== -->
+	<!--                       PACKAGING                            -->
+	<!-- Préciser ici la forme du livrable                          -->
+	<!-- que le module parent Maven doit produire (war, jar,        -->
+	<!--	POM, ...).                                              -->
+	<!-- ========================================================== -->
+	<!-- Résultat du Packaging (forme du livrable). Ici jar -->
+	<packaging>jar</packaging>
+
+
+	<!-- ========================================================== -->
+	<!-- NOM DU LIVRABLE GENERE PAR MAVEN                           -->
+	<!-- Préciser le nom du livrable que Maven doit produire        -->
+	<!-- (monapplication.war,                                       -->
+	<!-- monapplication.jar, monapplication.POM, ...).              -->
+	<!-- ========================================================== -->
+	<!-- Nom de l'application générée par le projet Maven -->
+	<name>tuto_spring_annotations_maven</name>
+	<!-- Description de l'application générée par le projet Maven -->
+	<description>tutoriel du site Spring avec Annotations et Maven</description>
+	<!-- URL éventuelle permettant de se connecter à l'application -->
+	<url></url>	
+
+
+    <!-- ================================================ -->
+	<!--                    PROPERTIEs                    -->
+	<!-- Préciser ici les propriétés générales du projet. -->
+	<!-- ================================================ -->
+	<properties>
+		<!-- Force l'encoding des sources du projet en UTF-8 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Vérifie la conformité des classes Java (.java) avec le JDK 1.8 -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<!-- Vérifie la conformité des classes Java (.class) avec le JDK 1.8 -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- Encodage pourle Reporting (site web) -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+
+	<!-- ========================================================== -->
+	<!--                          BUILD                             -->
+	<!-- Préciser ici les PLUGINS MAVEN à utiliser pour les builds. -->
+	<!-- ========================================================== -->
+	<build>
+		<plugins>
+			<plugin>
+				<!--  Maven Shade Plugin for the simple convenience of making the JAR file executable. -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>Application</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<!-- ================================================ -->
+	<!--                REPOSITORIEs                      -->
+	<!-- Gestion des repositories utilisées par le projet -->
+	<!-- Pour aller chercher les dépendances.             -->
+	<!-- ================================================ -->
+	<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+	<repositories>
+	    <repository>
+	        <id>io.spring.repo.maven.release</id>
+	        <url>http://repo.spring.io/release/</url>
+	        <snapshots><enabled>false</enabled></snapshots>
+	    </repository>
+	</repositories>
+
+
+	<!-- =========================================================== -->
+	<!--            DEPENDANCY MANAGEMENT POUR SPRING                -->
+	<!-- Gestion des dépendances SPRING utilisées par le projet      -->
+	<!-- Eviter des conflits de versions entre dépendances SPRING    -->
+	<!-- NE PLUS METTRE VERSION DANS LES DEPENDANCES SPRING          -->
+	<!-- =========================================================== -->  
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-framework-bom</artifactId>
+	            <version>4.3.10.RELEASE</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+	
+	
+	<!-- =============================================== -->
+	<!--                DEPENDANCEs                      -->
+	<!-- Gestion des dépendances utilisées par le projet -->
+	<!-- =============================================== -->
+	<dependencies>
+
+		<!-- ================================ -->
+		<!-- dépendances pour apache.commons -->
+		<!-- ================================ -->
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.6</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+		<!-- ================================ -->
+		<!-- dépendances pour log4J -->
+		<!-- ================================ -->
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-slf4j-impl</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-jcl -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-jcl</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-jul -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-jul</artifactId>
+		    <version>2.9.0</version>
+		    <scope>runtime</scope>
+		</dependency>
+
+
+		<!-- ================================ -->
+		<!--      dépendances pour TESTS      -->
+		<!-- ================================ -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- ================================ -->
+		<!--      dépendances DIVERSES        -->
+		<!-- ================================ -->
+		<!-- JODA pour les dates  -->
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.9.9</version>
+		</dependency>
+
+
+		<!-- ========================================================== -->
+		<!--           DEPENDANCES POUR SPRING  						-->
+		<!-- ========================================================== -->
+
+		<!-- SPRING CONTEXT -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<!-- FONDAMENTAL - access objects like a JNDI registry, internationalization  -->	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		
+		
+		<!-- =================================================== -->
+		<!--    dépendances pour servlet-api                     -->
+		<!-- provided car ne sert qu'à la compilation.           -->
+		<!-- Le serveur doit être compatible servlet-api 3.1.0   -->
+		<!-- Le serveur applicatif (Tomcat) fournira cette bibli -->
+		<!-- =================================================== -->		
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+	</dependencies>		
+	
+</project>
