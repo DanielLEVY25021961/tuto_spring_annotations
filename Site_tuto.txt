@@ -1,0 +1,9 @@
+
+
+
+http://static.olivergierke.de/lectures/spring-webapps/
+https://www.journaldev.com/2888/spring-tutorial-spring-core-tutorial
+http://websystique.com/spring/spring-dependency-injection-annotation-beans-auto-wiring-using-autowired-qualifier-resource-annotations-configuration/
+https://www.javatpoint.com/hibernate-and-spring-integration
+https://www.jtips.info/?title=Spring/Annotations
+http://books.sonatype.com/mvnex-book/reference/customizing-sect-intro.html
