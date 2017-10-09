@@ -9,6 +9,12 @@ import java.util.Locale;
  * <ul>
  * <li>INTERFACE contenant les constantes mises à disposition 
  * de l'ensemble de l'application.</li>
+ * <p>
+ * <br/>
+ * <img src="../../../../../../javadoc/images/IConstantesApplicatives.png" 
+ * alt="IConstantesApplicatives" border="1" align="center" />
+ * <br/>
+ * </p>
  * </ul>
  *
  * - Exemple d'utilisation :<br/>
