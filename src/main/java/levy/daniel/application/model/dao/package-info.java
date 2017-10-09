@@ -15,7 +15,7 @@
  *
  * @author dan Lévy
  * @version 1.0
- * @since 10 août 2017
+ * @since 22 sept. 2017
  *
  */
-package levy.daniel.application.metier;
+package levy.daniel.application.model.dao;

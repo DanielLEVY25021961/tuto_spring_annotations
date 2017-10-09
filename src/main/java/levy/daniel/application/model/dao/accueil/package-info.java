@@ -18,4 +18,4 @@
  * @since 22 sept. 2017
  *
  */
-package levy.daniel.application.model;
+package levy.daniel.application.model.dao.accueil;

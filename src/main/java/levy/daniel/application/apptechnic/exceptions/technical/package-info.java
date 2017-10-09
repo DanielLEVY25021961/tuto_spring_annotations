@@ -15,7 +15,7 @@
  *
  * @author dan Lévy
  * @version 1.0
- * @since 22 sept. 2017
+ * @since 1 oct. 2017
  *
  */
-package levy.daniel.application.model;
+package levy.daniel.application.apptechnic.exceptions.technical;

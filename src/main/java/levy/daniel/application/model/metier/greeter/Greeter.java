@@ -1,4 +1,4 @@
-package levy.daniel.application.metier.impl;
+package levy.daniel.application.model.metier.greeter;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

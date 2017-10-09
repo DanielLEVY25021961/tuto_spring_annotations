@@ -1,11 +1,11 @@
-package levy.daniel.application.services.impl;
+package levy.daniel.application.model.services.metier.message.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
-import levy.daniel.application.metier.impl.Greeter;
-import levy.daniel.application.services.IMessageService;
+import levy.daniel.application.model.metier.greeter.Greeter;
+import levy.daniel.application.model.services.metier.message.IMessageService;
 
 /**
  * class MockMessageService :<br/>

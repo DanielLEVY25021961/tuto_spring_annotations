@@ -1,4 +1,4 @@
-package levy.daniel.application.services;
+package levy.daniel.application.model.services.metier.message;
 
 
 /**

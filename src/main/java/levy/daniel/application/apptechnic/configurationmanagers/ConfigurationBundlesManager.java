@@ -31,6 +31,12 @@ import levy.daniel.application.apptechnic.exceptions.technical.impl.FichierInexi
  * <li>Gère aussi bien les properties INTERNES (dans la classpath) 
  * qu'EXTERNES (hors classpath) pour les properties 
  * paramétrable par la MOA.</li>
+ * <p>
+ * <br/>
+ * <img src="../../../../../../../../javadoc/images/properties_internes_externes.png" 
+ * alt="properties internes et externes" border="1" align="center" />
+ * <br/>
+ * </p>
  * <li>Met à disposition de l'ensemble de l'application 
  * des <b>Singletons</b> pour 
  * les fichiers .properties et tout ce dont l'application 

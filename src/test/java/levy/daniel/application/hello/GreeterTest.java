@@ -8,7 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
-import levy.daniel.application.metier.impl.Greeter;
+import levy.daniel.application.model.metier.greeter.Greeter;
 
 /**
  * class GreeterTest :<br/>

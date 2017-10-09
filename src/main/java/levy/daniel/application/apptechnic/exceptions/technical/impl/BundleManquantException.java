@@ -11,7 +11,7 @@ import levy.daniel.application.apptechnic.exceptions.technical.AbstractTechnical
  * class BundleManquantException :<br/>
  * Hérite de AbstractTechnicalException.<br/>
  * Typée pour signaler que le Bundle n'a pu être instancié
- * car le properties est manquant.<br/>
+ * car le application.properties est manquant.<br/>
  * Utilise la liste static listeExceptions de
  * AbstractTechnicalException pour y logger les
  * messages d'Exception.<br/>
