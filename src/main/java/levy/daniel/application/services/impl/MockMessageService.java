@@ -56,6 +56,7 @@ public class MockMessageService implements IMessageService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getMessage() {
 		
 		/* Interroge le metier. */

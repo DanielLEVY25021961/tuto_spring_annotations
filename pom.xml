@@ -65,76 +65,31 @@
 	</properties>
 
 
-	<!-- ========================================================== -->
-	<!--                          BUILD                             -->
-	<!-- Préciser ici les PLUGINS MAVEN à utiliser pour les builds. -->
-	<!-- ========================================================== -->
-	<build>
-		<plugins>
-			<plugin>
-				<!--  Maven Shade Plugin for the simple convenience of making the JAR file executable. -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.1</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>Application</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
-
-	<!-- ================================================ -->
-	<!--                REPOSITORIEs                      -->
-	<!-- Gestion des repositories utilisées par le projet -->
-	<!-- Pour aller chercher les dépendances.             -->
-	<!-- ================================================ -->
-	<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
-	<repositories>
-	    <repository>
-	        <id>io.spring.repo.maven.release</id>
-	        <url>http://repo.spring.io/release/</url>
-	        <snapshots><enabled>false</enabled></snapshots>
-	    </repository>
-	</repositories>
-
 
 	<!-- =========================================================== -->
 	<!--            DEPENDANCY MANAGEMENT POUR SPRING                -->
 	<!-- Gestion des dépendances SPRING utilisées par le projet      -->
 	<!-- Eviter des conflits de versions entre dépendances SPRING    -->
-	<!-- NE PLUS METTRE VERSION DANS LES DEPENDANCES SPRING          -->
 	<!-- =========================================================== -->  
 	<dependencyManagement>
 	    <dependencies>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-framework-bom</artifactId>
-	            <version>4.3.10.RELEASE</version>
-	            <type>pom</type>
-	            <scope>import</scope>
-	        </dependency>
+	        <!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-framework-bom</artifactId>
+			    <version>5.0.0.RELEASE</version>
+			    <type>pom</type>
+			    <!-- Indispensable de préciser scope = import -->
+			    <scope>import</scope>
+			</dependency>
 	    </dependencies>
 	</dependencyManagement>
-	
-	
+
+
 	<!-- =============================================== -->
 	<!--                DEPENDANCEs                      -->
 	<!-- Gestion des dépendances utilisées par le projet -->
-	<!-- =============================================== -->
+	<!-- =============================================== -->	
 	<dependencies>
 
 		<!-- ================================ -->
@@ -145,6 +100,7 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
+			<scope>compile</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
@@ -158,6 +114,7 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
+			<scope>compile</scope>
 		</dependency>
 
 
@@ -217,6 +174,46 @@
 
 
 		<!-- ================================ -->
+		<!--      dépendances pour XML        -->
+		<!-- ================================ -->
+		<!-- dom4j -->
+		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+		<dependency>
+		    <groupId>dom4j</groupId>
+		    <artifactId>dom4j</artifactId>
+		    <version>1.6.1</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- jaxen -->
+		<!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
+		<dependency>
+		    <groupId>jaxen</groupId>
+		    <artifactId>jaxen</artifactId>
+		    <version>1.1.6</version>
+		</dependency>
+		<!-- jdom -->
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+		<dependency>
+		    <groupId>org.jdom</groupId>
+		    <artifactId>jdom</artifactId>
+		    <version>2.0.2</version>
+		</dependency>
+		
+
+		<!-- ==============================================	-->
+		<!--      dépendances pour Formatage console       	-->
+		<!-- ==============================================	-->
+		<!-- velocity -->
+		<!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+		<dependency>
+		    <groupId>org.apache.velocity</groupId>
+		    <artifactId>velocity</artifactId>
+		    <version>1.7</version>
+		</dependency>
+
+
+		
+		<!-- ================================ -->
 		<!--      dépendances pour TESTS      -->
 		<!-- ================================ -->
 		<dependency>
@@ -225,47 +222,253 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
+		
 
 		<!-- ================================ -->
-		<!--      dépendances DIVERSES        -->
-		<!-- ================================ -->
-		<!-- JODA pour les dates  -->
+		<!--    dépendances pour Joda Time    -->
+		<!-- ================================ -->		
 		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
 		    <groupId>joda-time</groupId>
 		    <artifactId>joda-time</artifactId>
 		    <version>2.9.9</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- Joda Time avec Hibernate -->
+		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
+		<dependency>
+		    <groupId>org.jadira.usertype</groupId>
+		    <artifactId>usertype.core</artifactId>
+		    <version>6.0.1.GA</version>
+		    <scope>compile</scope>
 		</dependency>
 
 
-		<!-- ========================================================== -->
-		<!--           DEPENDANCES POUR SPRING  						-->
-		<!-- ========================================================== -->
-
-		<!-- SPRING CONTEXT -->
+		<!-- ================================ -->
+		<!--    dépendances pour SPRING       -->
+		<!-- ================================ -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <scope>compile</scope>
+		</dependency>		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-		<!-- FONDAMENTAL - access objects like a JNDI registry, internationalization  -->	
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <scope>compile</scope>
 		</dependency>
 		
 		
-		<!-- =================================================== -->
-		<!--    dépendances pour servlet-api                     -->
-		<!-- provided car ne sert qu'à la compilation.           -->
-		<!-- Le serveur doit être compatible servlet-api 3.1.0   -->
-		<!-- Le serveur applicatif (Tomcat) fournira cette bibli -->
-		<!-- =================================================== -->		
-		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
-		    <scope>provided</scope>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <scope>compile</scope>
 		</dependency>
 		
-	</dependencies>		
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+
+
+		<!-- ================================ -->
+		<!--      dépendances pour JPA        -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+		<!-- NE PAS METTRE -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>javax.persistence</groupId> -->
+<!-- 		    <artifactId>persistence-api</artifactId> -->
+<!-- 		    <version>1.0.2</version> -->
+<!-- 		</dependency> -->
+
+
+		<!-- ====================================================== -->
+		<!--        DEPENDANCES POUR ORM (Hibernate)  				-->
+		<!-- ====================================================== -->	
+		<!-- ESSENTIEL -->	
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>5.2.11.Final</version>
+		    <scope>compile</scope>
+		</dependency>
+
+		
+		<!-- LIEN JPA - HIBERNATE -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+		<dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>1.0.0.Final</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- POOL DE CONNEXION c3p0 -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-c3p0</artifactId>
+		    <version>5.2.11.Final</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+		<dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.5.2</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		
+		
+		<!-- ====================================================== -->
+		<!--        DEPENDANCES POUR Bases de Données  				-->
+		<!-- ====================================================== -->
+		<!-- HSQLDB -->		
+		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+		<dependency>
+		    <groupId>org.hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>2.4.0</version>
+		    <scope>compile</scope>		    
+		</dependency>
+		<!-- MySQL -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.7-dmr</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- POSTGRESQL -->
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.1.4</version>
+		</dependency>
+
+		
+	</dependencies>
+
+	
+				<!-- ======================================  -->
+				<!--   REPOSITORIES	POUR LES DEPENDANCES  	 -->
+				<!-- ======================================  -->	
+			<!-- Précise la localisation des dépôts Maven -->
+	<repositories>
+	
+		<!-- Dépôt Central MAVEN pour les dépendances -->
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>			
+		</repository>
+		
+		<!-- http://www.baeldung.com/spring-maven-repository -->
+		<!-- dépôt Maven pour SPRING au cas où le dépôt central est indisponible. -->
+		<repository> 
+        <id>repository.spring.release</id> 
+        	<name>Spring GA Repository</name> 
+        	<url>http://repo.spring.io/release</url>
+        	<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+        	<snapshots>
+				<enabled>false</enabled>
+			</snapshots>			         
+    	</repository>
+    	
+    	<!-- dépôt Maven pour SPRING au cas où le dépôt central est indisponible. -->
+    	<repository>
+	        <id>io.spring.repo.maven.release</id>
+	        <url>http://repo.spring.io/release/</url>
+	        <!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+	        <snapshots>
+	        	<enabled>false</enabled>
+	        </snapshots>
+	    </repository>
+    	    	
+	</repositories>
+	
+  
+  				<!-- ================================== -->
+				<!--       PLUGIN REPOSITORIES			-->
+				<!-- ================================== -->	
+  			
+	  <pluginRepositories>
+	    <pluginRepository>
+	      <releases>
+	        <updatePolicy>never</updatePolicy>
+	      </releases>
+	      <snapshots>
+	        <enabled>false</enabled>
+	      </snapshots>
+	      <id>central</id>
+	      <name>Central Repository</name>
+	      <url>https://repo.maven.apache.org/maven2</url>
+	    </pluginRepository>
+	  </pluginRepositories>
+  
+
+	<!-- ========================================================== -->
+	<!--                          BUILD                             -->
+	<!-- Préciser ici les PLUGINS MAVEN à utiliser pour les builds. -->
+	<!-- ========================================================== -->
+	<build>
+		<plugins>
+			<plugin>
+				<!--  Maven Shade Plugin for the simple convenience of making the JAR file executable. -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>Application</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	
 </project>
