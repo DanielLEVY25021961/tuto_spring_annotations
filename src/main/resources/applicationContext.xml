@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 							<!-- ================= -->
-							<!--    SPRING 5.0.0   -->
+							<!--    SPRING 5.0.1   -->
 							<!-- ================= -->
 
 <!-- ====================================================================================== -->
@@ -9,7 +9,7 @@
 <!-- * mvc pour utiliser Spring MVC 														-->
 <!-- * context pour utiliser applicationContext.xml et détecter automatiquement les beans 	-->
 <!-- * aop pour utiliser Spring AOP			 												-->
-<!-- * tx pour utiliser les annotations 													-->
+<!-- * tx pour utiliser les annotations pour les transactions								-->
 <!-- ====================================================================================== -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:mvc="http://www.springframework.org/schema/mvc"

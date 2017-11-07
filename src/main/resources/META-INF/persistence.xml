@@ -29,7 +29,7 @@
 		<!-- <persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller" 
 		transaction-type="RESOURCE_LOCAL"> -->
 
-	<!-- 						AVEC SPRING 5.0.0 						-->
+	<!-- 						AVEC SPRING 5.0.1 						-->
 	<!-- transaction manager géré par SPRING.							-->
 	<!-- Donc, ne pas utiliser l'attribut transaction-type 				-->
 	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller">
